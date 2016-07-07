@@ -1,0 +1,58 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+<head>
+<title>FindMe | {% block title %}{% endblock %}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/utils.css') }}" />
+<script type="text/javascript" src="{{ url_for('static', filename='bootstrap/js/jquery-1.11.3.js') }}" /></script>
+<script type="text/javascript" src="{{ url_for('static', filename='bootstrap/js/bootstrap.js') }}" /></script>
+<script type="text/javascript" src="{{ url_for('static', filename='bootstrap/js/dropdown.js') }}" /></script>
+<script type="text/javascript" src="{{ url_for('static', filename='bootstrap/js/show.js') }}" /></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/utils.js') }}"></script>
+
+</head>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<button type="button" class="btn btn-navbar" data-toggle="collapse"
+					data-target=".nav-collapse">
+					<span class="icon-bar"></span>Hit Me <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<div class="nav-collapse collapse">
+					<ul class="nav">
+						<li class="active"><a href="/">Home</a></li>
+						{% if user %}
+							<li><a href="{{ url_for('logout') }}">Logout</a></li>
+						{% endif %}
+						{% if not user %}
+							<li><a href="{{ url_for('login') }}">Login</a></li>
+							<li><a href="{{ url_for('register') }}">Register</a></li>
+						{% endif %}
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+		</div>
+</div>
+
+<div id="main" class="container">
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}
+	  <div class="alert">
+		    <ul class="flashes">
+		    {% for message in messages %}
+		      <li>{{ message }}</li>
+		    {% endfor %}
+		    </ul>
+		</div>
+	{% endif %}
+	{% endwith %}
+
+	{% block body %}{% endblock %}
+</div>
