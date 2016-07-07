@@ -1,9 +1,8 @@
 from datetime import datetime
 from flask import Flask,session, request, flash, url_for, redirect, render_template, abort ,g
-from flask.ext.sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 
 from werkzeug.security import generate_password_hash, check_password_hash
-
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')

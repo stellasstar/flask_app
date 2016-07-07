@@ -16,7 +16,7 @@
 
 </head>
 
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar navbar-default navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
 				<button type="button" class="btn btn-navbar" data-toggle="collapse"
@@ -27,6 +27,7 @@
 				<div class="nav-collapse collapse">
 					<ul class="nav">
 						<li class="active"><a href="/">Home</a></li>
+                                                <li class="active"><a href="{{ url_for('users') }}">Users</a></li>
 						{% if user %}
 							<li><a href="{{ url_for('logout') }}">Logout</a></li>
 						{% endif %}

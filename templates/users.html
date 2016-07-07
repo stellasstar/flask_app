@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block body %}
+<div id="main" class="container">
+
+{% if users %}
+    {% for user in users %}
+        <h1>{{ user.first_name }}&nbsp;{{ user.last_name }}</h1>
+        <h2>ID: {{ user.id }}</h2>
+        <h2>Username: {{ user.username }}</h2>
+        <h2>Birthday: {{ user.birthday }}</h2>
+        <h2>Email: {{ user.email }}</h2>
+        <h2>Registered on:  {{ user.registered_on }} </h2>
+        <h2> &nbsp; </h2>
+        <hr>
+        <h2> &nbsp; </h2>
+    {% endfor %}
+{% else %}
+    No users registered yet :(
+{% endif %}  
+
+</div>
+{% endblock %}

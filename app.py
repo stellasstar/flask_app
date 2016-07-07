@@ -38,6 +38,12 @@ def login():
     user = User.query.filter_by(username=username).first_or_404()
     return render_template('index.html', user=user)
 
+@app.route('/users',methods=['GET'])
+def users():
+    if request.method == 'GET':
+        users = User.query.all()
+        return render_template('users.html', users=users)
+
 @app.route('/logout')
 def logout():
     flask_login.logout_user()
