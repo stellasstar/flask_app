@@ -38,10 +38,19 @@
     <div class="control-group">
         <div class="controls">
           <input type="email" id="email" name="email" class="input-xlarge"
-            placeholder="Enter Email" value="{{ request.form.username }}"
+            placeholder="Enter Email" value="{{ request.form.email }}"
             required>
         </div>
     </div>
+
+    <div class="control-group">
+        <div class="controls">
+          <input type="birthday" id="birthday" name="birthday" class="input-xlarge"
+            placeholder="Enter Your Date of Birth" value="{{ request.form.birthday }}"
+            required>
+        </div>
+    </div>
+
 
     <div class="control-group">
         <div class="controls">

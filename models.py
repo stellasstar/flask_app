@@ -1,12 +1,13 @@
 from datetime import datetime
 from flask import Flask,session, request, flash, url_for, redirect, render_template, abort ,g
 from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.login import LoginManager
-from flask.ext.login import login_user , logout_user , current_user , login_required
+
 from werkzeug.security import generate_password_hash, check_password_hash
+
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
+app.secret_key = 'stella is the best secret key'
 db = SQLAlchemy(app)
 
 
@@ -18,14 +19,16 @@ class User(db.Model):
     last_name = db.Column('last_name' , db.String(250))
     password = db.Column('password' , db.String(250))
     email = db.Column('email',db.String(50),unique=True , index=True)
+    birthday = db.Column(db.Date)
     registered_on = db.Column('registered_on' , db.DateTime)
 
-    def __init__(self , username, first_name, last_name, password , email):
+    def __init__(self , username, first_name, last_name, password , email, birthday):
         self.username = username
         self.first_name = first_name
         self.last_name = last_name
         self.set_password(password)
         self.email = email
+        self.birthday = birthday
         self.registered_on = datetime.utcnow()
 
     def set_password(self , password):

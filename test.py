@@ -12,7 +12,7 @@ db = SQLAlchemy()
 def create_app(configfile):
     app = Flask(__name__)
 
-    app.config.from_pyfile(config, silent=True)
+    app.config.from_pyfile('config.py', silent=False)
     app.config['TESTING'] = True
     # Default port is 5000
     app.config['LIVESERVER_PORT'] = 8943
