@@ -43,15 +43,6 @@ def index():
     return render_template('index.html')
 
 
-def main():
-    try:
-        db.create_all()
-    except Exception as e:
-        print(e)
-        return 1
-    else:
-        return 0
-
 if __name__ == '__main__':
     app.debug = True
     app.run()
