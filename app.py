@@ -58,11 +58,6 @@ def index():
 def dbinit(): 
      db.drop_all()
      db.create_all()
-     print 'created db'
-     db.session.add(User(username='eko', first_name='Eko',
-                         last_name='Suprapto Wibowo', password='password',
-                         email='swdev.bali@gmail.com',
-                         birthday=datetime.date(1985, 1, 17)))
 
 if __name__ == '__main__':
     dbinit()
